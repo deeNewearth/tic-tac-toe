@@ -56,8 +56,8 @@ td:last-child{
 
 @media (min-width: 70em) and (orientation: landscape) {
     td {
-        width: 20em;
-        height: 20em;
+        width: 15em;
+        height: 15em;
       }
       
 }
