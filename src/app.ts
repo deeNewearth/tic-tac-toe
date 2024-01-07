@@ -10,14 +10,14 @@ type CellStat = {
 };
 
 const WinningLines = [
-  { cells: [0, 1, 2], line: {} },
-  { cells: [3, 4, 5], line: {} },
-  { cells: [6, 7, 8], line: {} },
-  { cells: [0, 3, 6], line: {} },
-  { cells: [1, 4, 7], line: {} },
-  { cells: [2, 5, 8], line: {} },
-  { cells: [0, 4, 8], line: {} },
-  { cells: [2, 4, 6], line: {} },
+  { cells: [0, 1, 2], line: [50, 25, 250, 25] },
+  { cells: [3, 4, 5], line: [50, 75, 250, 75] },
+  { cells: [6, 7, 8], line: [50, 125, 250, 125] },
+  { cells: [0, 3, 6], line: [50, 25, 50, 125] },
+  { cells: [1, 4, 7], line: [150, 25, 150, 125] },
+  { cells: [2, 5, 8], line: [250, 25, 250, 125] },
+  { cells: [0, 4, 8], line: [50, 25, 250, 125] },
+  { cells: [2, 4, 6], line: [250, 25, 50, 125] },
 ];
 
 window.onload = () => {
@@ -29,14 +29,7 @@ window.onload = () => {
 
   let gameWon: OCCUPIED | undefined = undefined;
 
-  function getCentreOfElement(el: HTMLElement) {
-    var bounds = el.getBoundingClientRect();
-    return {
-      x: bounds.left + bounds.width / 2.0,
-      y: bounds.top + bounds.height / 2.0,
-    };
-  }
-
+  
   function checkGameOver(by: OCCUPIED) {
     const playerChoices = cells.filter((c) => c.occupied === by);
 
@@ -57,13 +50,11 @@ window.onload = () => {
       winnerDiv.innerHTML =
         by === OCCUPIED.ByPlayer ? "Player won" : "Server won";
 
-      /*
       //draw the winning line
       ctx.beginPath(); // Start a new path
-      ctx.moveTo(30, 50); // Move the pen to (30, 50)
-      ctx.lineTo(150, 100); // Draw a line to (150, 100)
+      ctx.moveTo(won.line[0], won.line[1]);
+      ctx.lineTo(won.line[2], won.line[3]);
       ctx.stroke(); // Render the path
-      */
 
       return true;
     }
@@ -78,26 +69,6 @@ window.onload = () => {
         element: document.getElementById(`cell_${index}`),
       } as CellStat)
   );
-
-  const g = WinningLines[0];
-  console.log("plot line", JSON.stringify(g));
-
-  const k = cells[g.cells[0]];
-  const l = cells[g.cells[2]];
-
-  //const k1 = [k.element.offsetLeft +200, k.element.offsetTop];
-  //const l1 = [l.element.offsetLeft, l.element.offsetTop];
-
-  const k1 = getCentreOfElement(k.element);
-  const l1 = getCentreOfElement(l.element);
-
-  console.log("pos", JSON.stringify({ k1, l1 }));
-
-  //draw the winning line
-  ctx.beginPath(); // Start a new path
-  ctx.moveTo(k1.x, k1.y);
-  ctx.lineTo(l1.x, l1.y);
-  ctx.stroke(); // Render the path
 
   cells.forEach((cell) => {
     cell.element.onclick = (e) => {
