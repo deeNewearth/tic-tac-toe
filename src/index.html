@@ -7,14 +7,24 @@
     <link rel="stylesheet" href="./app.css">
   </head>
   <body>
-    <h1>Tic Tac Toe</h1>
+    <h2>Tic Tac Toe</h2>
 
+    <h1 id="winner"></h1>
+    
 
-    <Table>
-      <tr id="top_row"><td id="cell_0"/><td id="cell_1"/><td id="cell_2"/></tr>
-      <tr><td id="cell_3"/><td id="cell_4"/><td id="cell_5"/></tr>
-      <tr id="bottom_row"><td id="cell_6"/><td id="cell_7"/><td id="cell_8"/></tr>
-    </Table>
+    <div id="gameBoard">
+      <canvas id="gameCanvas"></canvas>
+
+      <Table >
+        <tr id="top_row"><td id="cell_0"/><td id="cell_1"/><td id="cell_2"/></tr>
+        <tr><td id="cell_3"/><td id="cell_4"/><td id="cell_5"/></tr>
+        <tr id="bottom_row"><td id="cell_6"/><td id="cell_7"/><td id="cell_8"/></tr>
+      </Table>
+
+      
+    </div>
+
+    
 
     <script type="module" src="./app.ts"></script>
   </body>
