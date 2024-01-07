@@ -1,0 +1,12 @@
+{
+  "name": "ic-tac-toe-for-recurse",
+  "source": "src/index.html",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build dist",
+    "check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "parcel": "^2.11.0"
+  }
+}
