@@ -3,7 +3,7 @@
   "source": "src/index.html",
   "scripts": {
     "start": "parcel src/index.html",
-    "build": "parcel build dist",
+    "build": "parcel build",
     "check": "tsc --noEmit"
   },
   "devDependencies": {
